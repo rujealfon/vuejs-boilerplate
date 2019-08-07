@@ -1,28 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/images/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <component :is="layout">
+      <router-view />
+    </component>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+const pageLayout = "page";
 
 export default {
-  name: "App",
-  components: {
-    HelloWorld
+  computed: {
+    layout() {
+      return (this.$route.meta.layout || pageLayout) + "-layout";
+    }
+  },
+  created() {
+    // nothing defined here (when this.$route.path is other than "/")
+    console.log(this.$route, this.$route.meta.layout);
+  },
+  updated() {
+    // something defined here whatever the this.$route.path
+    console.log(this.$route, this.$route.meta.layout);
   }
 };
 </script>
 
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style scoped></style>

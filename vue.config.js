@@ -1,5 +1,5 @@
 module.exports = {
-	devServer: {
+  devServer: {
     overlay: {
       warnings: true,
       errors: true
@@ -7,8 +7,11 @@ module.exports = {
   },
 
   chainWebpack: config => {
-    config.module.rule('eslint').use('eslint-loader').options({
-      fix: true
-    })
+    config.module
+      .rule("eslint")
+      .use("eslint-loader")
+      .options({
+        fix: true
+      });
   }
-}
+};
