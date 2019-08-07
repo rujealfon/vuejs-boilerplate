@@ -27,7 +27,7 @@ let router = new Router({
     {
       path: "/dashboard",
       name: "dashboard",
-      meta: { layout: "page", guest: true, requiresAuth: true },
+      meta: { layout: "page", requiresAuth: true },
       component: require("@/pages/Dashboard.vue").default
     },
     {
@@ -35,7 +35,6 @@ let router = new Router({
       name: "admin",
       meta: {
         layout: "page",
-        guest: true,
         requiresAuth: true,
         isAdmin: true
       },
