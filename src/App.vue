@@ -7,10 +7,12 @@
 </template>
 
 <script>
+const pageLayout = "page";
+
 export default {
   computed: {
     layout() {
-      return `${this.$route.meta.layout}-layout`;
+      return `${this.$route.meta.layout || pageLayout}-layout`;
     }
   },
 
