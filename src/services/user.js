@@ -25,10 +25,6 @@ const UserService = {
         grant_type: "password",
         email: email,
         password: password
-      },
-      auth: {
-        username: process.env.VUE_APP_CLIENT_ID,
-        password: process.env.VUE_APP_CLIENT_SECRET
       }
     };
 
@@ -65,10 +61,6 @@ const UserService = {
       data: {
         grant_type: "refresh_token",
         refresh_token: refreshToken
-      },
-      auth: {
-        username: process.env.VUE_APP_CLIENT_ID,
-        password: process.env.VUE_APP_CLIENT_SECRET
       }
     };
 

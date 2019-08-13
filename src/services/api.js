@@ -11,7 +11,9 @@ const ApiService = {
   },
 
   setHeader() {
-    axios.defaults.headers.common["Authorization"] = TokenService.getToken();
+    axios.defaults.headers.common[
+      "Authorization"
+    ] = `Bearer ${TokenService.getToken()}`;
     axios.defaults.headers.common["Content-Type"] = "application/json";
   },
 

@@ -28,6 +28,33 @@ const getters = {
   }
 };
 
+const mutations = {
+  loginRequest(state) {
+    state.authenticating = true;
+    state.authenticationError = "";
+    state.authenticationErrorCode = 0;
+  },
+
+  loginSuccess(state, accessToken) {
+    state.accessToken = accessToken;
+    state.authenticating = false;
+  },
+
+  loginError(state, { errorCode, errorMessage }) {
+    state.authenticating = false;
+    state.authenticationErrorCode = errorCode;
+    state.authenticationError = errorMessage;
+  },
+
+  logoutSuccess(state) {
+    state.accessToken = "";
+  },
+
+  refreshTokenPromise(state, promise) {
+    state.refreshTokenPromise = promise;
+  }
+};
+
 const actions = {
   async login({ commit }, { email, password }) {
     commit("loginRequest");
@@ -80,33 +107,6 @@ const actions = {
     }
 
     return state.refreshTokenPromise;
-  }
-};
-
-const mutations = {
-  loginRequest(state) {
-    state.authenticating = true;
-    state.authenticationError = "";
-    state.authenticationErrorCode = 0;
-  },
-
-  loginSuccess(state, accessToken) {
-    state.accessToken = accessToken;
-    state.authenticating = false;
-  },
-
-  loginError(state, { errorCode, errorMessage }) {
-    state.authenticating = false;
-    state.authenticationErrorCode = errorCode;
-    state.authenticationError = errorMessage;
-  },
-
-  logoutSuccess(state) {
-    state.accessToken = "";
-  },
-
-  refreshTokenPromise(state, promise) {
-    state.refreshTokenPromise = promise;
   }
 };
 
