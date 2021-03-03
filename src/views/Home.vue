@@ -2,6 +2,7 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    {{ msg }}
   </div>
 </template>
 
@@ -13,6 +14,10 @@ export default defineComponent({
   name: "Home",
   components: {
     HelloWorld
-  }
+  },
+
+  data: () => ({
+    msg: "Hellow Words"
+  })
 });
 </script>
