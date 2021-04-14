@@ -8,5 +8,13 @@ module.exports = {
       .options({
         fix: true
       });
+  },
+
+  css: {
+    loaderOptions: {
+      scss: {
+        prependData: `@import "~@/assets/scss/_mixins.scss"; @import "~@/assets/scss/_variables.scss";`
+      },
+    }
   }
 };
