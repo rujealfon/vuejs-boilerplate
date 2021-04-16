@@ -38,8 +38,14 @@ export default defineComponent({
   created() {
     console.log(clickMe("we"));
     clickMeAgain(13131233);
-    this.$validate("wesssssssss");
+    // this.$validate("wesssssssss");
     // console.log(this.$hello.sayHello("World"));
+
+    console.log(this.$api.sayHi("23"));
+
+    this.$api.forgotPassword("gg");
+
+    // this.axios.get("/hello.com");
   },
 
   methods: {
