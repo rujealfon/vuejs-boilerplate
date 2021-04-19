@@ -1,28 +1,9 @@
-// // src/api.js
-// import Vue from "vue";
-// import Auth from "@/services/api/auth";
-
-// // Initialize all or API factories
-// const factories = {
-//  auth: Auth(Vue.axios),
-// };
-
-// // Make them available in the app with this.$api
-// // https://vuejs.org/v2/cookbook/adding-instance-properties.html
-// Vue.$api = factories;
-
-// export default {
-//     install: (app, options) => {
-//       app.config.globalProperties.$translate = key => {
-//         return key.split('.').reduce((o, i) => {
-//           if (o) return o[i]
-//         }, options)
-//       }
-//     }
-//   }
-
 import { App } from "vue";
-import axios, { AxiosPromise } from "axios";
+import axios from "axios";
+
+import Auth from "@/services/api/auth";
+
+axios.defaults.baseURL = "http://auth.com";
 
 // Add a request interceptor
 axios.interceptors.request.use(
@@ -40,37 +21,21 @@ axios.interceptors.request.use(
   }
 );
 
-export interface ApiModule {
-  sayHello: (name: string) => string;
-  sayHi: (name: string) => string;
-  forgotPassword(email: string): AxiosPromise;
-}
-
 export default {
   install: (app: App) => {
-    const apiModule: ApiModule = {
-      sayHello: (name: string) => {
-        return `Hello ${name}`;
-      },
-
-      sayHi: (name: string) => {
-        return `Hi ${name}`;
-      },
-
-      forgotPassword: (email: string) => {
-        return axios.post("http://hellow.com/auth/password/forgot", {
-          email
-        });
-      }
+    const factories = {
+      auth: new Auth()
     };
 
-    app.config.globalProperties.$api = apiModule;
+    app.config.globalProperties.$api = factories;
   }
 };
 
 declare module "@vue/runtime-core" {
   //Bind to `this` keyword
   interface ComponentCustomProperties {
-    $api: ApiModule;
+    $api: {
+      auth: Auth;
+    };
   }
 }

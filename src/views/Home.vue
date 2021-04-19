@@ -41,11 +41,11 @@ export default defineComponent({
     // this.$validate("wesssssssss");
     // console.log(this.$hello.sayHello("World"));
 
-    console.log(this.$api.sayHi("23"));
+    // console.log(this.$api.sayHi("23"));
 
-    this.$api.forgotPassword("gg");
+    // this.$api.forgotPassword("gg");
 
-    // this.axios.get("/hello.com");
+    this.$api.auth.login("we", "we");
   },
 
   methods: {

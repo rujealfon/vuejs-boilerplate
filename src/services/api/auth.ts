@@ -1,5 +1,7 @@
-export default (axios: any) => ({
-  forgotPassword(email: string) {
-    return axios.post("/auth/password/forgot", { email });
+import axios from "axios";
+
+export default class Auth {
+  login(email: string, password: string) {
+    return axios.post("/auth/login", { email, password });
   }
-});
+}
