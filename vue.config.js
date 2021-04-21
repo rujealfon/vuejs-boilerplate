@@ -9,11 +9,12 @@ module.exports = {
         fix: true
       });
 
+    // https://vue-loader.vuejs.org/guide/linting.html#stylelint
     config.plugin("stylelint").use("stylelint-webpack-plugin", [
       {
         files: [
           "src/assets/**/*.{s?(a|c)ss,less,stylus}",
-          "{components,views}/**/*.vue"
+          "src/{components,views}/**/*.vue"
         ],
         fix: true
       }
