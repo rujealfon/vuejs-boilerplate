@@ -8,6 +8,16 @@ module.exports = {
       .options({
         fix: true
       });
+
+    config.plugin("stylelint").use("stylelint-webpack-plugin", [
+      {
+        files: [
+          "src/assets/**/*.{s?(a|c)ss,less,stylus}",
+          "{components,views}/**/*.vue"
+        ],
+        fix: true
+      }
+    ]);
   },
 
   css: {

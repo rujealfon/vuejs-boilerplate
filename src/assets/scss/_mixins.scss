@@ -1,7 +1,7 @@
 /* Mixins
 ------------------------------------------------------------------------------- */
 @mixin hover-active {
-&:hover {
+  &:hover {
     color: $primary-black;
     opacity: 0.7;
   }
